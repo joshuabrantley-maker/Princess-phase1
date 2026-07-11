@@ -247,13 +247,14 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 /* ============================
    HOME SCREEN — LAYOUT
    ============================ */
-
+/* HOME SCREEN — LAYOUT */
 #homeScreen {
   overflow-y: auto;
   max-height: 100vh;
   padding-bottom: 40px;
 }
 
+/* Center everything EXCEPT the sticky header */
 #homeScreen > *:not(.home-header) {
   margin-left: auto;
   margin-right: auto;
@@ -261,12 +262,10 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   max-width: 500px;
 }
 
-
-/* ============================
-   HOME SCREEN — HEADER
-   ============================ */
-
+/* Sticky header MUST be full width */
 .home-header {
+  width: 100% !important;
+  margin: 0 !important;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -274,7 +273,6 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   padding: 20px 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.35);
 }
-
 
 /* ============================
    HOME SCREEN — BUTTONS
