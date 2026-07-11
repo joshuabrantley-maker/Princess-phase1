@@ -257,12 +257,12 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 .home-header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
   background: var(--bg);
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.35);
 }
+
 
 /* ============================
    HOME SCREEN — BUTTONS
