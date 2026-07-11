@@ -537,4 +537,8 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   margin-top: 12px !important;   /* slightly tighter because it's small */
 }
 
+/* Phase 1 — Tight button spacing */
+.home-btn {
+  margin-top: 10px !important;   /* tighter spacing */
+}
 
