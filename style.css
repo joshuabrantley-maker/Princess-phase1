@@ -537,6 +537,26 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   margin-top: 12px !important;   /* slightly tighter because it's small */
 }
 
+/* Tighter spacing for all home screen elements */
+.streak-badge {
+  margin-top: 6px !important;
+}
+
+.countdown-card {
+  margin-top: 10px !important;
+}
+
+.stat-card {
+  margin-top: 10px !important;
+}
+
+.home-btn {
+  margin-top: 10px !important;
+}
+
+.phase-buttons {
+  margin-top: 10px !important;
+}
 
 
 
