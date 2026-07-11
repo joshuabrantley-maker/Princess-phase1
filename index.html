@@ -42,6 +42,16 @@
     <button class="home-btn disabled">Phase 3 — Continuous Runs</button>
   </div>
 
+  <div class="progress-ring-container">
+  <svg class="progress-ring" width="120" height="120">
+    <circle class="ring-bg" cx="60" cy="60" r="52" />
+    <circle class="ring-fill" cx="60" cy="60" r="52" />
+  </svg>
+  <div class="ring-label">
+    <span id="ringText">0 / 3</span>
+  </div>
+</div>
+  
   <div class="stats-grid">
   <div class="stat-card">
     <h3>Miles This Week</h3>
@@ -62,12 +72,12 @@
     <h3>Longest Run</h3>
     <p id="longestRun">0</p>
   </div>
+</div>
 
 <div id="runSavedBanner" class="run-saved-banner">
   🎉 Run Saved!
 </div>
   
-
 </div> <!-- END homeScreen -->
 
 
