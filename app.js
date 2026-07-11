@@ -520,5 +520,58 @@ function showRunSavedBanner() {
   setTimeout(() => b.classList.remove("show"), 2500);
 }
 
+let paceChart = null;
+
+function updatePaceChart() {
+  const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
+  if (stats.length === 0) return;
+
+  // Build labels (dates) and pace values
+  const labels = stats.map(run => new Date(run.date).toLocaleDateString());
+  const paces = stats.map(run => {
+    const minutes = run.duration / 60;
+    return minutes / run.distance; // minutes per mile
+  });
+
+  const ctx = document.getElementById('paceChart').getContext('2d');
+
+  // Destroy previous chart if it exists
+  if (paceChart) paceChart.destroy();
+
+  // Build new chart
+  paceChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Pace (min/mile)',
+        data: paces,
+        borderColor: '#78a0ff',
+        backgroundColor: 'rgba(120,160,255,0.2)',
+        borderWidth: 3,
+        tension: 0.3,
+        pointRadius: 4,
+        pointBackgroundColor: '#fff',
+        pointBorderColor: '#78a0ff',
+        pointHoverRadius: 6
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          ticks: { color: '#fff' }
+        },
+        x: {
+          ticks: { color: '#fff' }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: { color: '#fff' }
+        }
+      }
+    }
+  });
+}
 
 
