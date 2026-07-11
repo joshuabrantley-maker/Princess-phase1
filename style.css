@@ -431,7 +431,10 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 
   /* ⭐ FIX: full width inside the home screen container */
   width: 100%;
-  max-width: 420px;
+  max-width: 480px;
+  overflow: visible;
+}
+
 }
 
 .countdown-card h3 {
