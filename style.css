@@ -240,8 +240,20 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
    HOME SCREEN — BUTTONS
    ============================ */
 
+.home-buttons {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .home-btn {
-  width: 80%;
+width: 90%;
+max-width: 420px;
+  
   padding: 16px;
   font-size: 1.35rem;
   border-radius: 14px;
