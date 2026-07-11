@@ -387,11 +387,22 @@ updateCountdown();
 function saveWorkoutStats(distanceMiles, totalSeconds) {
   const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
 
+  const now = new Date();
+  const weekStart = new Date();
+  weekStart.setDate(now.getDate() - now.getDay()); // Sunday start
+
+  // Count how many runs already happened this week
+  let runsThisWeek = stats.filter(run => {
+    const d = new Date(run.date);
+    return d >= weekStart;
+  }).length;
+
   const entry = {
-    date: new Date().toISOString(),
+    date: now.toISOString(),
     distance: distanceMiles,
     time: totalSeconds,
-    pace: totalSeconds / distanceMiles
+    pace: totalSeconds / distanceMiles,
+    runNumber: runsThisWeek + 1   // ⭐ Auto-detected run number
   };
 
   stats.push(entry);
