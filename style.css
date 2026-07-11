@@ -244,11 +244,15 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   overflow-y: auto;
   max-height: 100vh;
   padding-bottom: 40px;
+}
 
-#homeScreen > * {
+#homeScreen > *:not(.home-header) {
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
+  max-width: 500px;
 }
+
 
 /* ============================
    HOME SCREEN — HEADER
