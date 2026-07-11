@@ -592,23 +592,24 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 
   z-index: 9999;
 }
-/* Make the control buttons full-width and stacked */
+
+/* Make the 3 control buttons fill the entire row evenly */
 .bottom-panel .controls {
   display: flex;
-  flex-direction: column;   /* stack vertically */
-  gap: 10px;                /* spacing between buttons */
+  flex-direction: row;     /* keep them on one line */
+  justify-content: space-between;
+  gap: 10px;               /* spacing between buttons */
   width: 100%;
-  padding: 0 20px;          /* nice side padding */
+  padding: 0 20px;         /* nice side padding */
 }
 
-/* Make each button fill the entire line */
+/* Make each button grow equally */
 .bottom-panel .ctrl-btn {
-  width: 100%;
-  padding: 16px 0;          /* taller buttons */
-  font-size: 1.2rem;        /* bigger text */
+  flex: 1;                 /* each button expands evenly */
+  padding: 16px 0;         /* taller buttons */
+  font-size: 1.2rem;       /* bigger text */
   text-align: center;
 }
-
 
 
 
