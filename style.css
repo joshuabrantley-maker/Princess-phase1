@@ -172,6 +172,10 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   z-index: 9999;
 }
 
+#phase1Screen {
+  padding-bottom: 120px; /* space for the fixed controls */
+}
+
 
 /* Completion banner */
 .complete-banner {
