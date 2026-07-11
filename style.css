@@ -307,27 +307,36 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 }
 
 
+/* ============================
+   HOME SCREEN — PHASE 1 STYLE BUTTONS
+   ============================ */
+
 .home-btn {
-width: 90%;
-max-width: 420px;
-  
-  padding: 16px;
+  width: 90%;
+  max-width: 420px;
+
+  padding: 18px;
   font-size: 1.35rem;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: #fff;
-  cursor: pointer;
   text-align: center;
+  cursor: pointer;
+
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 18px rgba(255, 120, 255, 0.25);
+
   transition: 0.25s ease;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 12px rgba(255, 120, 255, 0.25);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .home-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
   transform: translateY(-3px);
-  box-shadow: 0 0 18px rgba(255, 120, 255, 0.45);
+  box-shadow: 0 0 24px rgba(255, 120, 255, 0.45);
+  background: rgba(255, 255, 255, 0.10);
 }
 
 .home-btn.disabled {
