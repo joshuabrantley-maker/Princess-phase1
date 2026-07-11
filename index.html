@@ -15,6 +15,7 @@
 </head>
 
 <body>
+  
 <!-- HOME SCREEN -->
 <div id="homeScreen" class="screen active">
   <div class="home-header">
@@ -24,35 +25,39 @@
   </div>
 
   <div class="home-buttons">
-   <button class="home-btn" onclick="startTodaysWorkout()">✨🏃‍♀️ Start Today’s Workout</button>
+    <button class="home-btn" onclick="startTodaysWorkout()">✨🏃‍♀️ Start Today’s Workout</button>
     <button class="home-btn" onclick="openPhase(1)">Phase 1 — Interval Training</button>
     <button class="home-btn disabled">Phase 2 — Run/Walk Build</button>
     <button class="home-btn disabled">Phase 3 — Continuous Runs</button>
   </div>
-</div>
 
+  <!-- ⭐ MOVE STATS GRID INSIDE HOMESCREEN ⭐ -->
   <div class="stats-grid">
-  <div class="stat-card">
-    <h3>Miles This Week</h3>
-    <p id="milesWeek">0</p>
-  </div>
+    <div class="stat-card">
+      <h3>Miles This Week</h3>
+      <p id="milesWeek">0</p>
+    </div>
 
-  <div class="stat-card">
-    <h3>Last 7 Days</h3>
-    <p id="miles7">0</p>
-  </div>
+    <div class="stat-card">
+      <h3>Last 7 Days</h3>
+      <p id="miles7">0</p>
+    </div>
 
-  <div class="stat-card">
-    <h3>Workouts Completed</h3>
-    <p id="workoutsCompleted">0</p>
-  </div>
+    <div class="stat-card">
+      <h3>Workouts Completed</h3>
+      <p id="workoutsCompleted">0</p>
+    </div>
 
-  <div class="stat-card">
-    <h3>Longest Run</h3>
-    <p id="longestRun">0</p>
+    <div class="stat-card">
+      <h3>Longest Run</h3>
+      <p id="longestRun">0</p>
+    </div>
   </div>
-</div>
+</div> <!-- END homeScreen -->
 
+
+<!-- PHASE 1 SCREEN -->
+<div id="phase1" class="screen hidden">
 
 <!-- PHASE 1 SCREEN -->
 <div id="phase1" class="screen hidden">
