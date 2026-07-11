@@ -242,8 +242,8 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 
 #homeScreen {
   overflow-y: auto;
+  max-height: 100vh;
   padding-bottom: 40px;
-}
 
 #homeScreen > * {
   margin-left: auto;
