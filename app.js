@@ -472,10 +472,10 @@ function openPhase(num) {
 function startTodaysWorkout() {
   openPhase(1);
   paused = true;
-document.getElementById('pauseBtn').textContent = '▶ Go';
-document.getElementById('pauseBtn').classList.add('paused');
-
+  document.getElementById('pauseBtn').textContent = '▶ Go';
+  document.getElementById('pauseBtn').classList.add('paused');
 }
+
 
 function updateCountdown() {
   const raceDay = new Date("2027-02-25");
