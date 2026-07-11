@@ -124,7 +124,7 @@ if (!auto) {
   segT0 = Date.now();
   activateCard(step);
   renderTapBtn();
-  updateProgLabel();
+  ();
   styleSegTimer();
   startRaf();
 }
@@ -170,21 +170,20 @@ function goBack() {
 
 function togglePause() {
   if (paused) {
-    // ⭐ This is the first "Go"
+    // ⭐ FIRST START (Go)
     paused = false;
     segT0 = Date.now();
     startRaf();
     document.getElementById('pauseBtn').textContent = '⏸ Pause';
     document.getElementById('pauseBtn').classList.remove('paused');
   } else {
-    // ⭐ Normal pause
+    // ⭐ PAUSE
     paused = true;
     stopRaf();
     document.getElementById('pauseBtn').textContent = '▶ Resume';
     document.getElementById('pauseBtn').classList.add('paused');
   }
 }
-
 function resetSession() {
   stopRaf();
 
@@ -465,17 +464,22 @@ function goHome() {
 
 function openPhase(num) {
   if (num === 1) {
+    stopRaf();          // ⭐ Stop timers immediately
+    paused = true;      // ⭐ Ensure paused state
+    segT0 = 0;          // ⭐ Prevent accidental time accumulation
+
     showScreen('phase1');
+
+    // ⭐ Set button to Go
+    const btn = document.getElementById('pauseBtn');
+    btn.textContent = '▶ Go';
+    btn.classList.add('paused');
   }
 }
 
 function startTodaysWorkout() {
-  openPhase(1);
-  paused = true;
-  document.getElementById('pauseBtn').textContent = '▶ Go';
-  document.getElementById('pauseBtn').classList.add('paused');
+  openPhase(1);   // ⭐ openPhase now handles paused + Go button
 }
-
 
 function updateCountdown() {
   const raceDay = new Date("2027-02-25");
