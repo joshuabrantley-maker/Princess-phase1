@@ -418,6 +418,7 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   font-size: 1.6rem;
   font-weight: 700;
   color: #fff;
+   white-space: nowrap;
 }
 
 /* ============================
