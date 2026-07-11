@@ -211,6 +211,7 @@ function finish() {
       const totalSeconds = totalMs / 1000;   // total workout time in seconds
       saveWorkoutStats(parseFloat(distance), totalSeconds);
       updateHomeStats();
+      showRunSavedBanner();   // ⭐ optional animation if you added it
     }
   }, 500);
 }
@@ -424,5 +425,11 @@ function updateHomeStats() {
   document.getElementById("statLongest").innerText = longestRun.toFixed(2);
   document.getElementById("statWorkouts").innerText = stats.length;
 }
+function showRunSavedBanner() {
+  const b = document.getElementById("runSavedBanner");
+  b.classList.add("show");
+  setTimeout(() => b.classList.remove("show"), 2500);
+}
+
 
 
