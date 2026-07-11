@@ -183,6 +183,7 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .home-header h1 {
