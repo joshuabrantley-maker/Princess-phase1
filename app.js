@@ -170,17 +170,18 @@ function goBack() {
 
 function togglePause() {
   if (paused) {
-    segT0 += Date.now() - pauseT0;
+    // ⭐ This is the first "Go"
     paused = false;
-    document.getElementById('pauseBtn').textContent = '⏸ Pause';
-    document.getElementById('pauseBtn').classList.add('paused');
+    segT0 = Date.now();
     startRaf();
+    document.getElementById('pauseBtn').textContent = '⏸ Pause';
+    document.getElementById('pauseBtn').classList.remove('paused');
   } else {
-    pauseT0 = Date.now();
-    paused  = true;
+    // ⭐ Normal pause
+    paused = true;
     stopRaf();
     document.getElementById('pauseBtn').textContent = '▶ Resume';
-    document.getElementById('pauseBtn').classList.remove('paused');
+    document.getElementById('pauseBtn').classList.add('paused');
   }
 }
 
