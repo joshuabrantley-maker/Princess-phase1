@@ -274,6 +274,14 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   box-shadow: 0 4px 12px rgba(0,0,0,0.35);
 }
 
+.home-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
 /* ============================
    HOME SCREEN — BUTTONS
    ============================ */
