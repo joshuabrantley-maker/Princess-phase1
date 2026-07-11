@@ -199,9 +199,6 @@ function finish() {
   document.getElementById('tapBtn').style.display   = 'none';
 
   const w = WEEKS[wkIdx];
-  document.getElementById('doneMsg').textContent =
-    `You crushed ${w.label}! ${fmt(totalMs/1000)} of training done. Tap Reset to go again.`;
-
   document.getElementById('completeBanner').classList.add('show');
 
   // ⭐ Ask user for distance and save stats
@@ -209,9 +206,20 @@ function finish() {
     const distance = prompt("Enter distance traveled (miles):");
     if (distance && !isNaN(distance)) {
       const totalSeconds = totalMs / 1000;   // total workout time in seconds
+
+      // Save stats
       saveWorkoutStats(parseFloat(distance), totalSeconds);
       updateHomeStats();
-      showRunSavedBanner();   // ⭐ optional animation if you added it
+      showRunSavedBanner();
+
+      // ⭐ Get updated stats so we can show the run number
+      const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
+      const lastRun = stats[stats.length - 1]; // the run we just saved
+      const runNum = lastRun.runNumber;
+
+      // ⭐ Final message including run number
+      document.getElementById('doneMsg').textContent =
+        `Run ${runNum} this week! You crushed ${w.label}! ${fmt(totalMs/1000)} of training done. Tap Reset to go again.`;
     }
   }, 500);
 }
