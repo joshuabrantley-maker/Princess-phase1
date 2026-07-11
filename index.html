@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Phase 1 Road to Princess Challenge</title>
+
+<!-- Castle + Crown Favicon -->
+<link rel="icon" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+    <text y='0.9em' font-size='90'>🏰👑</text>
+  </svg>">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ── TOP PANEL ── -->
+<div class="top-panel">
+  <header>
+    <h1>🏰👑 Phase 1 Road to Princess Challenge</h1>
+    <p>Auto-advances · tap to skip · timers always visible</p>
+  </header>
+
+  <div class="week-scroll">
+    <div class="week-row" id="weekRow"></div>
+  </div>
+
+  <div class="timers">
+    <div class="timer-box lit" id="segBox" style="--tc:#ffb347">
+      <div class="timer-box-fill" id="segBoxFill"></div>
+      <div class="timer-label">Segment Left</div>
+      <div class="timer-main" id="segMain">--:--</div>
+      <div class="timer-sub" id="segSub">0:00 elapsed</div>
+    </div>
+
+    <div class="timer-box" id="wkBox">
+      <div class="timer-box-fill" id="wkBoxFill"></div>
+      <div class="timer-label">Workout Left</div>
+      <div class="timer-main" id="wkMain">--:--</div>
+      <div class="timer-sub" id="wkSub">0:00 elapsed</div>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span id="progText">Step 1 of —</span>
+      <span id="progPct">0%</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+  </div>
+
+  <div class="summary" id="summary"></div>
+  <div class="divider"></div>
+</div>
+
+<!-- ── SEGMENTS ── -->
+<div class="seg-viewport">
+  <div class="seg-stack" id="segStack"></div>
+</div>
+
+<!-- ── BOTTOM PANEL ── -->
+<div class="bottom-panel">
+  <div id="completeBanner" class="complete-banner">
+    <h2>🎉 Workout Complete!</h2>
+    <p id="doneMsg"></p>
+  </div>
+
+  <button class="tap-btn btn-warm" id="tapBtn" onclick="skipCurrent()">
+    <span class="tl" id="tapLabel">⏭ Skip Warm-Up</span>
+    <span class="th">Tap to skip to next segment early</span>
+  </button>
+
+  <div class="controls">
+    <button class="ctrl-btn" onclick="goBack()">⬅ Back</button>
+    <button class="ctrl-btn paused" id="pauseBtn" onclick="togglePause()">⏸ Pause</button>
+    <button class="ctrl-btn danger" onclick="resetSession()">↺ Reset</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
