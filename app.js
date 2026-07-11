@@ -412,6 +412,7 @@ function init() {
 
 init();
 updateHomeStats();   // ⭐ NEW — updates stats on load
+updateStreakBadge();
 
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => {
