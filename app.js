@@ -442,7 +442,7 @@ function startTodaysWorkout() {
 }
 
 function updateCountdown() {
-  const raceDay = new Date("2027-02-21");
+  const raceDay = new Date("2027-02-25");
   const today = new Date();
   const diff = Math.ceil((raceDay - today) / (1000 * 60 * 60 * 24));
   document.getElementById("raceCountdown").textContent = `${diff} days left`;
