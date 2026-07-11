@@ -219,3 +219,19 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   0% { transform: translate(-50%, 0) scale(1); opacity: 0.9; }
   100% { transform: translate(-50%, -40px) scale(0.2); opacity: 0; }
 }
+
+/* ============================
+   SCREEN SWITCHING (CRITICAL)
+   ============================ */
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}
