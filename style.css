@@ -537,31 +537,6 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   margin-top: 12px !important;   /* slightly tighter because it's small */
 }
 
-/* ============================
-   PHASE 1 — TRUE STACK LAYOUT (TIGHT)
-   ============================ */
 
-/* Turn the home screen into a tight vertical stack */
-#homeScreen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px; /* Phase 1 tight spacing */
-  background: #0a0a1a;
-}
-
-/* Remove margins from all children so gap controls spacing */
-#homeScreen > * {
-  margin: 0 !important;
-}
-
-/* Ensure consistent width for all elements */
-.countdown-card,
-.stat-card,
-.home-btn,
-.streak-badge {
-  width: 90%;
-  max-width: 420px;
-}
 
 
