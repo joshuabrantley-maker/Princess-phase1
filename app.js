@@ -132,27 +132,40 @@ if (!auto) {
 function skipCurrent() { if (!paused) advance(false); }
 
 function goBack() {
+  // If we're mid-segment, restart it instead of going back
+  if (segElapsed > 2000) {   // ⭐ If more than 2 seconds passed
+    doneMs -= segElapsed;    // Remove elapsed time
+    segT0 = Date.now();      // Restart timer
+    updateWorkoutLeft();
+    updateProgLabel();
+    styleSegTimer();
+    return;
+  }
+
+  // ⭐ Otherwise, go back a full segment
   if (step === 0) return;
 
   const curCard = document.getElementById(`card${step}`);
   if (curCard) curCard.remove();
 
   step--;
+
+  // ⭐ Add back full duration of the segment we returned to
   totalMs += segs[step].dur * 1000;
+
+  // ⭐ Remove the duration from doneMs
   doneMs = Math.max(0, doneMs - segs[step].dur * 1000);
-  segT0  = Date.now();
+
+  segT0 = Date.now();
 
   const stack = document.getElementById('segStack');
   const newCard = makeCard(step, true);
   newCard.classList.add('entering');
   stack.insertBefore(newCard, stack.firstChild);
 
-  activateCard(step);
-  renderTapBtn();
+  updateWorkoutLeft();
   updateProgLabel();
   styleSegTimer();
-  updateWorkoutLeft();
-  startRaf();
 }
 
 function togglePause() {
@@ -173,22 +186,32 @@ function togglePause() {
 
 function resetSession() {
   stopRaf();
+
   step   = 0;
   doneMs = 0;
-  segT0  = Date.now();
-  paused = false;
-  document.getElementById('pauseBtn').textContent = '⏸ Pause';
+
+  // ⭐ Restore full workout duration
+  totalMs = segs.reduce((s, x) => s + x.dur * 1000, 0);
+
+  paused = true;   // ⭐ Start in paused mode
+  segT0  = 0;      // ⭐ Prevent early time accumulation
+
+  document.getElementById('pauseBtn').textContent = '▶ Go';
   document.getElementById('pauseBtn').classList.add('paused');
+
   document.getElementById('completeBanner').classList.remove('show');
   document.getElementById('tapBtn').style.display = '';
   document.querySelectorAll('.ctrl-btn').forEach(b => b.style.display = '');
+
   buildStack();
   renderTapBtn();
   updateProgLabel();
   styleSegTimer();
-  updateWorkoutLeft();
-  startRaf();
+  updateWorkoutLeft();   // ⭐ UI updates immediately
+
+  // ⭐ DO NOT start RAF here — wait until user presses Go
 }
+
 
 function updateWorkoutLeft() {
   const left = totalMs - doneMs;
@@ -447,6 +470,10 @@ function openPhase(num) {
 
 function startTodaysWorkout() {
   openPhase(1);
+  paused = true;
+document.getElementById('pauseBtn').textContent = '▶ Go';
+document.getElementById('pauseBtn').classList.add('paused');
+
 }
 
 function updateCountdown() {
