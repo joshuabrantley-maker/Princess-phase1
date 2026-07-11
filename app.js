@@ -268,6 +268,14 @@ function updateWeeklyStreak() {
 
   localStorage.setItem('weeklyStreak', streak);
 }
+// Update the streak badge on the home screen
+function updateStreakBadge() {
+  const streak = parseInt(localStorage.getItem('weeklyStreak') || '0', 10);
+  const el = document.getElementById('streakCount');
+  if (!el) return;
+
+  el.textContent = `🔥 Weekly Streak: ${streak} week${streak === 1 ? '' : 's'}`;
+}
 
 // ── Week loading ──────────────────────────────────────────
 function selectWeek(i) {
@@ -487,6 +495,10 @@ function updateHomeStats() {
   document.getElementById("statMiles7").innerText = miles7Days.toFixed(2);
   document.getElementById("statLongest").innerText = longestRun.toFixed(2);
   document.getElementById("statWorkouts").innerText = stats.length;
+  
+  updateWeeklyStreak();
+updateStreakBadge();
+
 }
 function showRunSavedBanner() {
   const b = document.getElementById("runSavedBanner");
