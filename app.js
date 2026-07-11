@@ -201,7 +201,7 @@ function resetSession() {
 
   document.getElementById('completeBanner').classList.remove('show');
   document.getElementById('tapBtn').style.display = '';
-  document.querySelectorAll('.ctrl-btn').forEach(b => b.style.display = '';
+  document.querySelectorAll('.ctrl-btn').forEach(b => b.style.display = '');
 
   buildStack();
   renderTapBtn();
@@ -567,10 +567,11 @@ function updatePaceChart() {
   // Build labels (dates) and pace values
   const labels = stats.map(run => new Date(run.date).toLocaleDateString());
   const paces = stats.map(run => {
-    const minutes = run.duration / 60;
+   const minutes = run.time / 60;
     return minutes / run.distance; // minutes per mile
   });
 
+  if (typeof Chart === "undefined") return;
   const ctx = document.getElementById('paceChart').getContext('2d');
 
   // Destroy previous chart if it exists
