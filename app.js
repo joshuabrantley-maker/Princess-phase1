@@ -211,6 +211,7 @@ function finish() {
       saveWorkoutStats(parseFloat(distance), totalSeconds);
       updateHomeStats();
       showRunSavedBanner();
+      updateWeeklyStreak();
       updateStreakBadge();
 
 
