@@ -592,7 +592,6 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 
   z-index: 9999;
 }
-
 /* Make the control buttons full-width and stacked */
 .bottom-panel .controls {
   display: flex;
