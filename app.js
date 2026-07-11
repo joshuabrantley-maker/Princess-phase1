@@ -346,6 +346,9 @@ function showScreen(id) {
   screen.classList.remove('hidden');
   screen.classList.add('active');
 }
+function goHome() {
+  showScreen('homeScreen');
+}
 
 function openPhase(num) {
   if (num === 1) {
