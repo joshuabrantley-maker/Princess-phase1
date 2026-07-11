@@ -15,6 +15,24 @@
 </head>
 
 <body>
+<!-- HOME SCREEN -->
+<div id="homeScreen" class="screen active">
+  <div class="home-header">
+    <div class="crown">👑</div>
+    <h1>Road to the Princess Challenge</h1>
+    <div class="sparkles"></div>
+  </div>
+
+  <div class="home-buttons">
+    <button class="home-btn" onclick="startTodaysWorkout()">▶️ Start Today’s Workout</button>
+    <button class="home-btn" onclick="openPhase(1)">Phase 1 — Interval Training</button>
+    <button class="home-btn disabled">Phase 2 — Run/Walk Build</button>
+    <button class="home-btn disabled">Phase 3 — Continuous Runs</button>
+  </div>
+</div>
+
+<!-- PHASE 1 SCREEN -->
+<div id="phase1" class="screen hidden">
 
 <!-- ── TOP PANEL ── -->
 <div class="top-panel">
@@ -78,7 +96,7 @@
     <button class="ctrl-btn danger" onclick="resetSession()">↺ Reset</button>
   </div>
 </div>
-
+</div> <!-- END phase1 -->
 <script src="app.js"></script>
 </body>
 </html>
