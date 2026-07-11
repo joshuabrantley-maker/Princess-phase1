@@ -356,6 +356,33 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   margin-right: auto;
 }
 
+/* Pace Chart Card — matches Phase 1 aesthetic */
+.pace-card {
+  margin-top: 16px;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 18px rgba(120, 160, 255, 0.25);
+  transition: 0.25s ease;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.pace-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(120, 160, 255, 0.7);
+}
+
+#paceChart {
+  width: 100% !important;
+  height: 240px !important;
+}
+
   
 /* ============================
    HOME SCREEN — PHASE 1 STYLE CARDS
