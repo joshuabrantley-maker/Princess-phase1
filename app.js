@@ -357,3 +357,11 @@ function startTodaysWorkout() {
   openPhase(1);
 }
 
+function updateCountdown() {
+  const raceDay = new Date("2027-02-21"); // Princess Half Marathon
+  const today = new Date();
+  const diff = Math.ceil((raceDay - today) / (1000 * 60 * 60 * 24));
+  document.getElementById("raceCountdown").textContent = `${diff} days left`;
+}
+
+updateCountdown();
