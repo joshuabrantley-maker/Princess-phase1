@@ -504,4 +504,37 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   margin-top: 18px !important;
 }
 
+/* ============================
+   PHASE 1 — TIGHT SPACING
+   ============================ */
+
+/* All home screen elements except header follow Phase 1 spacing */
+#homeScreen > *:not(.home-header) {
+  margin-top: 14px;      /* tighter spacing */
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  max-width: 420px;
+}
+
+/* Countdown card spacing */
+.countdown-card {
+  margin-top: 14px !important;
+}
+
+/* Stat cards spacing */
+.stat-card {
+  margin-top: 14px !important;
+}
+
+/* Buttons spacing */
+.home-btn {
+  margin-top: 14px !important;
+}
+
+/* Streak badge spacing */
+.streak-badge {
+  margin-top: 12px !important;   /* slightly tighter because it's small */
+}
+
 
