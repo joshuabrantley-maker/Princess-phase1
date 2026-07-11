@@ -110,6 +110,13 @@ function advance(auto) {
   }
 
   doneMs += auto ? segs[step].dur * 1000 : (Date.now() - segT0);
+  // If skipped early, subtract the skipped portion from total workout time
+if (!auto) {
+  const actual = Date.now() - segT0;                 // time you actually did
+  const skipped = segs[step].dur*1000 - actual;      // time you skipped
+  totalMs -= skipped;                                // reduce remaining workout time
+}
+
   step++;
 
   if (step >= segs.length) { finish(); return; }
