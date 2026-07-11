@@ -211,6 +211,8 @@ function finish() {
       saveWorkoutStats(parseFloat(distance), totalSeconds);
       updateHomeStats();
       showRunSavedBanner();
+      updateStreakBadge();
+
 
       // ⭐ Get updated stats so we can show the run number
       const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
