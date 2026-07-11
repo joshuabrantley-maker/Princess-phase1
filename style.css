@@ -471,5 +471,37 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   text-shadow: 0 0 10px rgba(120, 160, 255, 0.6);
 }
 
+/* ============================
+   PHASE 1 — HOME SCREEN SPACING + LAYOUT
+   ============================ */
+
+/* All home screen elements except header follow the same vertical rhythm */
+#homeScreen > *:not(.home-header) {
+  margin-top: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  max-width: 420px;
+}
+
+/* Remove extra margins from countdown card (it already inherits spacing) */
+.countdown-card {
+  margin-top: 18px !important;
+}
+
+/* Remove extra margins from stat cards (they inherit spacing too) */
+.stat-card {
+  margin-top: 18px !important;
+}
+
+/* Buttons follow the same spacing rhythm */
+.home-btn {
+  margin-top: 18px !important;
+}
+
+/* Streak badge follows the same spacing rhythm */
+.streak-badge {
+  margin-top: 18px !important;
+}
 
 
