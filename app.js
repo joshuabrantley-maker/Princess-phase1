@@ -334,10 +334,17 @@ function init() {
 }
 
 init();
-
 function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  // Hide all screens
+  document.querySelectorAll('.screen').forEach(s => {
+    s.classList.remove('active');
+    s.classList.add('hidden');
+  });
+
+  // Show the selected screen
+  const screen = document.getElementById(id);
+  screen.classList.remove('hidden');
+  screen.classList.add('active');
 }
 
 function openPhase(num) {
