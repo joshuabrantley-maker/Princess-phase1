@@ -55,7 +55,6 @@
   </div>
 </div> <!-- END homeScreen -->
 
-
 <!-- PHASE 1 SCREEN -->
 <div id="phase1" class="screen hidden">
 
@@ -71,6 +70,7 @@
     </div>
   </div>
 
+  <!-- ── TIMERS ── -->
   <div class="timers">
     <div class="timer-box lit" id="segBox" style="--tc:#ffb347">
       <div class="timer-box-fill" id="segBoxFill"></div>
@@ -87,42 +87,46 @@
     </div>
   </div>
 
+  <!-- ── PROGRESS BAR ── -->
   <div class="progress-wrap">
     <div class="progress-label">
       <span id="progText">Step 1 of —</span>
       <span id="progPct">0%</span>
     </div>
-    <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progFill"></div>
+    </div>
   </div>
 
   <div class="summary" id="summary"></div>
   <div class="divider"></div>
-</div>
 
-<!-- ── SEGMENTS ── -->
-<div class="seg-viewport">
-  <div class="seg-stack" id="segStack"></div>
-</div>
-
-<!-- ── BOTTOM PANEL ── -->
-<div class="bottom-panel">
-  <div id="completeBanner" class="complete-banner">
-    <h2>🎉 Workout Complete!</h2>
-    <p id="doneMsg"></p>
+  <!-- ── SEGMENTS ── -->
+  <div class="seg-viewport">
+    <div class="seg-stack" id="segStack"></div>
   </div>
 
-  <button class="tap-btn btn-warm" id="tapBtn" onclick="skipCurrent()">
-    <span class="tl" id="tapLabel">⏭ Skip Warm-Up</span>
-    <span class="th">Tap to skip to next segment early</span>
-  </button>
+  <!-- ── BOTTOM PANEL ── -->
+  <div class="bottom-panel">
+    <div id="completeBanner" class="complete-banner">
+      <h2>🎉 Workout Complete!</h2>
+      <p id="doneMsg"></p>
+    </div>
 
-  <div class="controls">
-    <button class="ctrl-btn" onclick="goBack()">⬅ Back</button>
-    <button class="ctrl-btn paused" id="pauseBtn" onclick="togglePause()">⏸ Pause</button>
-    <button class="ctrl-btn danger" onclick="resetSession()">↺ Reset</button>
+    <button class="tap-btn btn-warm" id="tapBtn" onclick="skipCurrent()">
+      <span class="tl" id="tapLabel">⏭ Skip Warm-Up</span>
+      <span class="th">Tap to skip to next segment early</span>
+    </button>
+
+    <div class="controls">
+      <button class="ctrl-btn" onclick="goBack()">⬅ Back</button>
+      <button class="ctrl-btn paused" id="pauseBtn" onclick="togglePause()">⏸ Pause</button>
+      <button class="ctrl-btn danger" onclick="resetSession()">↺ Reset</button>
+    </div>
   </div>
-</div>
+
 </div> <!-- END phase1 -->
+
   
 <script src="app.js"></script>
 </body>
