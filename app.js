@@ -60,8 +60,10 @@ function startRaf() {
 }
 
 function tick() {
+  segElapsed = Date.now() - segT0;   // ⭐ FIXED
+
   const seg   = segs[step];
-  const elMs  = Date.now() - segT0;
+  const elMs  = segElapsed;
   const elS   = elMs / 1000;
   const durS  = seg.dur;
   const remS  = Math.max(durS - elS, 0);
