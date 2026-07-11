@@ -190,6 +190,11 @@ function resetSession() {
   startRaf();
 }
 
+function updateWorkoutLeft() {
+  const left = totalMs - doneMs;
+  document.getElementById("wkMain").textContent = fmt(left / 1000);
+}
+
 function finish() {
   stopRaf();
   document.getElementById('progFill').style.width = '100%';
