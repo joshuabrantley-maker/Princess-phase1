@@ -186,30 +186,22 @@ function togglePause() {
 }
 function resetSession() {
   stopRaf();
-
   step   = 0;
   doneMs = 0;
 
-  // ⭐ Restore full workout duration
   totalMs = segs.reduce((s, x) => s + x.dur * 1000, 0);
 
-  paused = true;   // ⭐ Start in paused mode
-  segT0  = 0;      // ⭐ Prevent early time accumulation
+  paused = true;
+  segT0  = Date.now();   // ⭐ FIXED
 
   document.getElementById('pauseBtn').textContent = '▶ Go';
   document.getElementById('pauseBtn').classList.add('paused');
-
-  document.getElementById('completeBanner').classList.remove('show');
-  document.getElementById('tapBtn').style.display = '';
-  document.querySelectorAll('.ctrl-btn').forEach(b => b.style.display = '');
 
   buildStack();
   renderTapBtn();
   updateProgLabel();
   styleSegTimer();
-  updateWorkoutLeft();   // ⭐ UI updates immediately
-
-  // ⭐ DO NOT start RAF here — wait until user presses Go
+  updateWorkoutLeft();
 }
 
 
@@ -464,13 +456,12 @@ function goHome() {
 
 function openPhase(num) {
   if (num === 1) {
-    stopRaf();          // ⭐ Stop timers immediately
-    paused = true;      // ⭐ Ensure paused state
-    segT0 = 0;          // ⭐ Prevent accidental time accumulation
+    stopRaf();          
+    paused = true;      
+    segT0 = Date.now(); // ⭐ FIXED — no NaN
 
     showScreen('phase1');
 
-    // ⭐ Set button to Go
     const btn = document.getElementById('pauseBtn');
     btn.textContent = '▶ Go';
     btn.classList.add('paused');
