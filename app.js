@@ -334,3 +334,19 @@ function init() {
 }
 
 init();
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function openPhase(num) {
+  if (num === 1) {
+    showScreen('phase1');
+  }
+}
+
+function startTodaysWorkout() {
+  openPhase(1);
+}
+
