@@ -332,3 +332,28 @@ max-width: 420px;
   color: #fff;
 }
 
+.countdown-card {
+  margin-top: 35px;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 12px rgba(255, 120, 255, 0.25);
+  width: 90%;
+  max-width: 420px;
+}
+
+.countdown-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.countdown-card p {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
