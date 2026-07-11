@@ -419,5 +419,57 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   color: #fff;
 }
 
+/* ============================
+   PHASE 1 BLUE GLOW — GLOBAL HOME SCREEN UNIFICATION
+   ============================ */
+
+/* Header title glow */
+.home-header h1 {
+  text-shadow: 0 0 12px rgba(120, 160, 255, 0.7);
+}
+
+/* Crown shimmer — recolored to blue */
+@keyframes crownShimmer {
+  0% { filter: drop-shadow(0 0 4px rgba(120, 160, 255, 0.5)); }
+  50% { filter: drop-shadow(0 0 12px rgba(120, 160, 255, 1)); }
+  100% { filter: drop-shadow(0 0 4px rgba(120, 160, 255, 0.5)); }
+}
+
+/* Stat card glow */
+.stat-card {
+  box-shadow: 0 0 18px rgba(120, 160, 255, 0.25);
+}
+
+.stat-card:hover {
+  box-shadow: 0 0 24px rgba(120, 160, 255, 0.45);
+}
+
+.stat-card h3 {
+  text-shadow: 0 0 12px rgba(120, 160, 255, 0.7);
+}
+
+/* Countdown card glow */
+.countdown-card {
+  box-shadow: 0 0 18px rgba(120, 160, 255, 0.25);
+}
+
+.countdown-card h3 {
+  text-shadow: 0 0 12px rgba(120, 160, 255, 0.7);
+}
+
+/* Buttons glow */
+.home-btn {
+  box-shadow: 0 0 18px rgba(120, 160, 255, 0.25);
+}
+
+.home-btn:hover {
+  box-shadow: 0 0 24px rgba(120, 160, 255, 0.45);
+}
+
+/* Streak badge glow */
+.streak-badge {
+  text-shadow: 0 0 10px rgba(120, 160, 255, 0.6);
+}
+
 
 
