@@ -166,7 +166,7 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 .complete-banner p  { color: var(--muted); font-size: .84rem; line-height: 1.5; }
 
 /* ============================
-   HOME SCREEN — PHASE 1 STYLE HEADER
+   HOME SCREEN — PHASE 1 HEADER
    ============================ */
 
 .home-header {
@@ -174,53 +174,53 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   top: 0;
   z-index: 100;
 
-  /* Phase 1 deep navy background */
-  background: #0a0a1a;
+  /* Phase 1 deep navy */
+  background: #0a0a1a !important;
 
-  /* Phase 1 glass effect */
+  /* Glass effect */
   backdrop-filter: blur(14px);
 
-  /* Phase 1 depth + subtle glow */
+  /* Depth */
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 0 18px rgba(255, 120, 255, 0.25);
 
-  /* Phase 1 spacing */
+  /* Spacing */
   padding: 22px 0;
 
   /* Center content */
-  display: flex;
+  display: flex !important;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: center !important;
+  justify-content: center !important;
 
   /* Required for sticky */
   width: 100% !important;
   margin: 0 !important;
 }
 
-/* Header title — Phase 1 glow */
+/* Title */
 .home-header h1 {
   font-size: 2.2rem;
   font-weight: 700;
   color: #fff;
   text-shadow: 0 0 12px rgba(255, 120, 255, 0.7);
   margin-top: 8px;
+  text-align: center;
 }
 
-/* Crown — KEEP shimmer */
+/* Crown shimmer (kept) */
 .crown {
   font-size: 2.8rem;
   animation: crownShimmer 2.5s ease-in-out infinite;
 }
 
-/* Crown shimmer keyframes (kept exactly as you like) */
 @keyframes crownShimmer {
   0% { filter: drop-shadow(0 0 4px rgba(255, 200, 255, 0.5)); }
   50% { filter: drop-shadow(0 0 12px rgba(255, 120, 255, 1)); }
   100% { filter: drop-shadow(0 0 4px rgba(255, 200, 255, 0.5)); }
 }
 
-/* Sparkles removed for Phase 1 theme */
+/* Remove sparkles for Phase 1 */
 .sparkles {
   display: none;
 }
