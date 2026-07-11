@@ -268,8 +268,9 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   max-width: 500px;
 }
 #homeScreen {
-  background: linear-gradient(180deg, #0a0a1a, #1a0a2a 40%, #2a0a3a 100%);
+  background: #0a0a1a;
 }
+
 
 
 /* Sticky header MUST be full width */
@@ -385,13 +386,14 @@ max-width: 420px;
 
 .countdown-card {
   margin-top: 35px;
-  padding: 18px 22px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  padding: 20px;
   text-align: center;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 12px rgba(255, 120, 255, 0.25);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 18px rgba(255, 120, 255, 0.25);
+  transition: 0.25s ease;;
   width: 90%;
   max-width: 420px;
 }
