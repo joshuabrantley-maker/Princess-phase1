@@ -401,7 +401,7 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   backdrop-filter: blur(14px);
   box-shadow: 0 0 18px rgba(255, 120, 255, 0.25);
   transition: 0.25s ease;
-  width: 90%;
+ width: 100%;
   max-width: 420px;
   margin-left: auto;
   margin-right: auto;
