@@ -154,28 +154,6 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 .ctrl-btn:hover  { border-color: var(--muted); color: var(--text); }
 .ctrl-btn.danger:hover { border-color: var(--accent-run); color: var(--accent-run); }
 
-.bottom-controls {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 14px 0;
-  background: rgba(10, 10, 26, 0.85);
-  backdrop-filter: blur(14px);
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 -4px 18px rgba(120, 160, 255, 0.25);
-
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  z-index: 9999;
-}
-
-#phase1Screen {
-  padding-bottom: 120px; /* space for the fixed controls */
-}
-
 
 /* Completion banner */
 .complete-banner {
@@ -579,6 +557,29 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 
 .phase-buttons {
   margin-top: 6px !important;
+}
+
+.bottom-controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  padding: 14px 0;
+  background: rgba(10, 10, 26, 0.85);
+  backdrop-filter: blur(14px);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 -4px 18px rgba(120, 160, 255, 0.25);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  z-index: 9999;
+}
+#phase1Screen {
+  padding-bottom: 140px;
 }
 
 
