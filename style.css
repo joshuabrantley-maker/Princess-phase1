@@ -267,6 +267,10 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   width: 100%;
   max-width: 500px;
 }
+#homeScreen {
+  background: linear-gradient(180deg, #0a0a1a, #1a0a2a 40%, #2a0a3a 100%);
+}
+
 
 /* Sticky header MUST be full width */
 .home-header {
