@@ -179,6 +179,14 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 }
 
 .home-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.home-header {
   width: 100% !important;
   margin: 0 !important;
 }
@@ -273,14 +281,6 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   padding: 20px 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.35);
 }
-
-.home-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 
 /* ============================
    HOME SCREEN — BUTTONS
