@@ -543,19 +543,19 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 }
 
 .countdown-card {
-  margin-top: 8px !important;
+  margin-top: 6px !important;
 }
 
 .stat-card {
-  margin-top: 8px !important;
+  margin-top: 6px !important;
 }
 
 .home-btn {
-  margin-top: 8px !important;
+  margin-top: 6px !important;
 }
 
 .phase-buttons {
-  margin-top: 8px !important;
+  margin-top: 6px !important;
 }
 
 
