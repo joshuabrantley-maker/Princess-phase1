@@ -197,11 +197,24 @@ function finish() {
   document.getElementById('segBoxFill').style.width = '100%';
   document.getElementById('wkBoxFill').style.width  = '100%';
   document.getElementById('tapBtn').style.display   = 'none';
+
   const w = WEEKS[wkIdx];
   document.getElementById('doneMsg').textContent =
     `You crushed ${w.label}! ${fmt(totalMs/1000)} of training done. Tap Reset to go again.`;
+
   document.getElementById('completeBanner').classList.add('show');
+
+  // ⭐ Ask user for distance and save stats
+  setTimeout(() => {
+    const distance = prompt("Enter distance traveled (miles):");
+    if (distance && !isNaN(distance)) {
+      const totalSeconds = totalMs / 1000;   // total workout time in seconds
+      saveWorkoutStats(parseFloat(distance), totalSeconds);
+      updateHomeStats();
+    }
+  }, 500);
 }
+
 
 // ── Week loading ──────────────────────────────────────────
 function selectWeek(i) {
@@ -334,18 +347,19 @@ function init() {
 }
 
 init();
+updateHomeStats();   // ⭐ NEW — updates stats on load
+
 function showScreen(id) {
-  // Hide all screens
   document.querySelectorAll('.screen').forEach(s => {
     s.classList.remove('active');
     s.classList.add('hidden');
   });
 
-  // Show the selected screen
   const screen = document.getElementById(id);
   screen.classList.remove('hidden');
   screen.classList.add('active');
 }
+
 function goHome() {
   showScreen('homeScreen');
 }
@@ -361,10 +375,54 @@ function startTodaysWorkout() {
 }
 
 function updateCountdown() {
-  const raceDay = new Date("2027-02-21"); // Princess Half Marathon
+  const raceDay = new Date("2027-02-21");
   const today = new Date();
   const diff = Math.ceil((raceDay - today) / (1000 * 60 * 60 * 24));
   document.getElementById("raceCountdown").textContent = `${diff} days left`;
 }
 
 updateCountdown();
+
+function saveWorkoutStats(distanceMiles, totalSeconds) {
+  const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
+
+  const entry = {
+    date: new Date().toISOString(),
+    distance: distanceMiles,
+    time: totalSeconds,
+    pace: totalSeconds / distanceMiles
+  };
+
+  stats.push(entry);
+  localStorage.setItem('runStats', JSON.stringify(stats));
+
+  console.log("Workout saved:", entry);
+}
+
+function updateHomeStats() {
+  const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
+  if (stats.length === 0) return;
+
+  const now = new Date();
+  const weekStart = new Date();
+  weekStart.setDate(now.getDate() - now.getDay());
+
+  let milesThisWeek = 0;
+  let miles7Days = 0;
+  let longestRun = 0;
+
+  stats.forEach(run => {
+    const d = new Date(run.date);
+
+    if (d >= weekStart) milesThisWeek += run.distance;
+    if ((now - d) / 86400000 <= 7) miles7Days += run.distance;
+    if (run.distance > longestRun) longestRun = run.distance;
+  });
+
+  document.getElementById("statMilesWeek").innerText = milesThisWeek.toFixed(2);
+  document.getElementById("statMiles7").innerText = miles7Days.toFixed(2);
+  document.getElementById("statLongest").innerText = longestRun.toFixed(2);
+  document.getElementById("statWorkouts").innerText = stats.length;
+}
+
+
