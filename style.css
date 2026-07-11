@@ -240,34 +240,29 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
    HOME SCREEN — BUTTONS
    ============================ */
 
-.home-buttons {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-}
-
 .home-btn {
   width: 80%;
-  padding: 15px;
-  font-size: 1.3rem;
+  padding: 16px;
+  font-size: 1.35rem;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.25);
   color: #fff;
   cursor: pointer;
   text-align: center;
   transition: 0.25s ease;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 12px rgba(255, 120, 255, 0.25);
 }
 
 .home-btn:hover {
-  background: rgba(255, 255, 255, 0.22);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px rgba(255, 120, 255, 0.45);
 }
 
 .home-btn.disabled {
-  opacity: 0.4;
+  opacity: 0.45;
   cursor: not-allowed;
+  box-shadow: none;
 }
