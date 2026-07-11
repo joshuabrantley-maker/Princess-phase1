@@ -138,6 +138,7 @@ function goBack() {
   if (curCard) curCard.remove();
 
   step--;
+  totalMs += segs[step].dur * 1000;
   doneMs = Math.max(0, doneMs - segs[step].dur * 1000);
   segT0  = Date.now();
 
@@ -150,6 +151,7 @@ function goBack() {
   renderTapBtn();
   updateProgLabel();
   styleSegTimer();
+  updateWorkoutLeft();
   startRaf();
 }
 
@@ -184,6 +186,7 @@ function resetSession() {
   renderTapBtn();
   updateProgLabel();
   styleSegTimer();
+  updateWorkoutLeft();
   startRaf();
 }
 
