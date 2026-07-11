@@ -224,6 +224,50 @@ function finish() {
   }, 500);
 }
 
+// ===== WEEKLY STREAK HELPERS =====
+
+// Get the start of the current week (Sunday-based)
+function getWeekStart(date = new Date()) {
+  const d = new Date(date);
+  const day = d.getDay(); // 0 = Sunday
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() - day);
+  return d;
+}
+
+// Count runs in the current week
+function getRunsThisWeek() {
+  const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
+  const weekStart = getWeekStart();
+  return stats.filter(run => new Date(run.date) >= weekStart).length;
+}
+
+// Update weekly streak based on LAST week’s performance
+function updateWeeklyStreak() {
+  const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
+  const now = new Date();
+
+  const thisWeekStart = getWeekStart(now);
+  const lastWeekStart = new Date(thisWeekStart);
+  lastWeekStart.setDate(lastWeekStart.getDate() - 7);
+
+  const lastWeekEnd = new Date(thisWeekStart);
+
+  const runsLastWeek = stats.filter(run => {
+    const d = new Date(run.date);
+    return d >= lastWeekStart && d < lastWeekEnd;
+  }).length;
+
+  let streak = parseInt(localStorage.getItem('weeklyStreak') || '0', 10);
+
+  if (runsLastWeek >= 3) {
+    streak += 1;
+  } else {
+    streak = 0;
+  }
+
+  localStorage.setItem('weeklyStreak', streak);
+}
 
 // ── Week loading ──────────────────────────────────────────
 function selectWeek(i) {
