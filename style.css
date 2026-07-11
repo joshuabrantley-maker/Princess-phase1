@@ -278,3 +278,45 @@ max-width: 420px;
   cursor: not-allowed;
   box-shadow: none;
 }
+
+/* ============================
+   HOME SCREEN — STATS GRID
+   ============================ */
+
+.stats-grid {
+  margin-top: 35px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 12px rgba(255, 120, 255, 0.25);
+  transition: 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px rgba(255, 120, 255, 0.45);
+}
+
+.stat-card h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.stat-card p {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
