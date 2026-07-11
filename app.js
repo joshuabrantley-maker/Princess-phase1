@@ -426,6 +426,8 @@ function showScreen(id) {
 
 function goHome() {
   showScreen('homeScreen');
+    updateHomeStats();      // refresh stats
+  updateStreakBadge();    // refresh streak badge
 }
 
 function openPhase(num) {
