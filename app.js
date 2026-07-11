@@ -46,6 +46,7 @@ let segT0   = 0;
 let paused  = false;
 let pauseT0 = 0;
 let raf     = null;
+let segElapsed = 0;
 
 // ── Format helpers ────────────────────────────────────────
 const fmt   = s => { s=Math.max(0,s|0); return `${String((s/60)|0).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`; };
@@ -60,7 +61,7 @@ function startRaf() {
 }
 
 function tick() {
-  segElapsed = Date.now() - segT0;   // ⭐ FIXED
+  segElapsed = Date.now() - segT0;   // ⭐ REQUIRED
 
   const seg   = segs[step];
   const elMs  = segElapsed;
@@ -126,7 +127,6 @@ if (!auto) {
   segT0 = Date.now();
   activateCard(step);
   renderTapBtn();
-  ();
   styleSegTimer();
   startRaf();
 }
@@ -188,16 +188,20 @@ function togglePause() {
 }
 function resetSession() {
   stopRaf();
+
   step   = 0;
   doneMs = 0;
-
   totalMs = segs.reduce((s, x) => s + x.dur * 1000, 0);
 
   paused = true;
-  segT0  = Date.now();   // ⭐ FIXED
+  segT0  = Date.now();
 
   document.getElementById('pauseBtn').textContent = '▶ Go';
   document.getElementById('pauseBtn').classList.add('paused');
+
+  document.getElementById('completeBanner').classList.remove('show');
+  document.getElementById('tapBtn').style.display = '';
+  document.querySelectorAll('.ctrl-btn').forEach(b => b.style.display = '';
 
   buildStack();
   renderTapBtn();
