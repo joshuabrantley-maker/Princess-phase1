@@ -237,6 +237,18 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
 }
 
 /* ============================
+   HOME SCREEN — LAYOUT
+   ============================ */
+
+#homeScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  padding-bottom: 40px;
+}
+
+/* ============================
    HOME SCREEN — BUTTONS
    ============================ */
 
