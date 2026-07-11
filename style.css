@@ -367,6 +367,14 @@ max-width: 420px;
   color: #fff;
 }
 
+.countdown-card {
+  width: 90%;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+  
 .countdown-card p {
   font-size: 1.6rem;
   font-weight: 700;
