@@ -276,6 +276,14 @@ header p  { font-size: .72rem; color: var(--muted); margin-top: 3px; }
   box-shadow: 0 4px 12px rgba(0,0,0,0.35);
 }
 
+.streak-badge {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #ffd6ff;
+  text-shadow: 0 0 8px rgba(255, 150, 255, 0.7);
+}
+
 /* ============================
    HOME SCREEN — BUTTONS
    ============================ */
