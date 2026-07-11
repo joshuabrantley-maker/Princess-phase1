@@ -512,6 +512,7 @@ stats.forEach(run => {
   
   updateWeeklyStreak();
 updateStreakBadge();
+  updatePaceChart();
 
 }
 function showRunSavedBanner() {
