@@ -565,20 +565,27 @@ function updatePaceChart() {
   const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
   if (stats.length === 0) return;
 
-  // Build labels (dates) and pace values
+  // Wait until Chart.js is actually available
+  if (typeof Chart === "undefined") {
+    setTimeout(updatePaceChart, 100);   // try again shortly
+    return;
+  }
+
   const labels = stats.map(run => new Date(run.date).toLocaleDateString());
   const paces = stats.map(run => {
-   const minutes = run.time / 60;
-    return minutes / run.distance; // minutes per mile
+    const minutes = run.time / 60;
+    return minutes / run.distance; // min/mile
   });
 
-  if (typeof Chart === "undefined") return;
-  const ctx = document.getElementById('paceChart').getContext('2d');
+  const canvas = document.getElementById('paceChart');
+  if (!canvas) return;
 
-  // Destroy previous chart if it exists
-  if (paceChart) paceChart.destroy();
+  const ctx = canvas.getContext('2d');
 
-  // Build new chart
+  if (paceChart) {
+    paceChart.destroy();
+  }
+
   paceChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -598,20 +605,12 @@ function updatePaceChart() {
     },
     options: {
       scales: {
-        y: {
-          ticks: { color: '#fff' }
-        },
-        x: {
-          ticks: { color: '#fff' }
-        }
+        y: { ticks: { color: '#fff' } },
+        x: { ticks: { color: '#fff' } }
       },
       plugins: {
-        legend: {
-          labels: { color: '#fff' }
-        }
+        legend: { labels: { color: '#fff' } }
       }
     }
   });
 }
-
-
