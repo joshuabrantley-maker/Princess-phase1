@@ -563,25 +563,42 @@ let paceChart = null;
 
 function updatePaceChart() {
   const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
-  if (stats.length === 0) return;
+  console.log("Total runs in storage:", stats.length);
+
+  if (stats.length === 0) {
+    console.log("No runs saved yet");
+    return;
+  }
 
   if (typeof Chart === "undefined") {
+    console.log("Chart.js not ready, retrying...");
     setTimeout(updatePaceChart, 150);
     return;
   }
 
-  // Filter out any runs with invalid/zero distance
+  // Keep only valid runs
   const valid = stats.filter(run => run.distance && run.distance > 0 && run.time > 0);
-  if (valid.length === 0) return;
+  console.log("Valid runs for chart:", valid.length, valid);
+
+  if (valid.length === 0) {
+    console.log("No valid runs with distance + time");
+    return;
+  }
 
   const labels = valid.map(run => new Date(run.date).toLocaleDateString());
   const paces = valid.map(run => {
     const minutes = run.time / 60;
-    return minutes / run.distance; // min per mile
+    return +(minutes / run.distance).toFixed(2); // min/mile
   });
 
+  console.log("Labels:", labels);
+  console.log("Paces:", paces);
+
   const canvas = document.getElementById('paceChart');
-  if (!canvas) return;
+  if (!canvas) {
+    console.log("Canvas element not found");
+    return;
+  }
 
   try {
     const ctx = canvas.getContext('2d');
@@ -598,25 +615,44 @@ function updatePaceChart() {
           label: 'Pace (min/mile)',
           data: paces,
           borderColor: '#78a0ff',
-          backgroundColor: 'rgba(120,160,255,0.2)',
+          backgroundColor: 'rgba(120,160,255,0.15)',
           borderWidth: 3,
           tension: 0.3,
-          pointRadius: 4,
-          pointBackgroundColor: '#fff',
+          pointRadius: 5,
+          pointBackgroundColor: '#ffffff',
           pointBorderColor: '#78a0ff',
-          pointHoverRadius: 6
+          pointHoverRadius: 7,
+          fill: true
         }]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
-          y: { ticks: { color: '#fff' } },
-          x: { ticks: { color: '#fff' } }
+          y: {
+            beginAtZero: false,
+            ticks: { color: '#ffffff' },
+            grid: { color: 'rgba(255,255,255,0.08)' }
+          },
+          x: {
+            ticks: { color: '#ffffff' },
+            grid: { color: 'rgba(255,255,255,0.08)' }
+          }
         },
         plugins: {
-          legend: { labels: { color: '#fff' } }
+          legend: {
+            labels: { color: '#ffffff' }
+          }
         }
       }
     });
+
+    // Force resize after a short delay
+    setTimeout(() => {
+      if (paceChart) paceChart.resize();
+    }, 100);
+
+    console.log("Chart created successfully");
   } catch (err) {
     console.error("Pace chart error:", err);
   }
