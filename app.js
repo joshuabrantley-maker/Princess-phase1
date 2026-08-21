@@ -523,39 +523,35 @@ function updateHomeStats() {
   if (stats.length === 0) return;
 
   const now = new Date();
-  const weekStart = new Date();
-  weekStart.setDate(now.getDate() - now.getDay());
-
- let totalMiles = 0;
+  let totalMiles = 0;
   let miles7Days = 0;
   let longestRun = 0;
-stats.forEach(run => {
-  const d = new Date(run.date);
 
-  // ⭐ cumulative total miles
-  totalMiles += run.distance;
+  stats.forEach(run => {
+    const d = new Date(run.date);
 
-  // ⭐ last 7 days
-  if ((now - d) / 86400000 <= 7) {
-    miles7Days += run.distance;
-  }
+    totalMiles += run.distance;
 
-  // ⭐ longest run
-  if (run.distance > longestRun) {
-    longestRun = run.distance;
-  }
-});
+    if ((now - d) / 86400000 <= 7) {
+      miles7Days += run.distance;
+    }
 
+    if (run.distance > longestRun) {
+      longestRun = run.distance;
+    }
+  });
+
+  // These IDs now match the HTML
   document.getElementById("statTotalMiles").innerText = totalMiles.toFixed(2);
-  document.getElementById("statMiles7").innerText = miles7Days.toFixed(2);
-  document.getElementById("statLongest").innerText = longestRun.toFixed(2);
-  document.getElementById("statWorkouts").innerText = stats.length;
-  
-  updateWeeklyStreak();
-updateStreakBadge();
-  updatePaceChart();
+  document.getElementById("miles7").innerText = miles7Days.toFixed(2);
+  document.getElementById("longestRun").innerText = longestRun.toFixed(2);
+  document.getElementById("workoutsCompleted").innerText = stats.length;
 
+  updateWeeklyStreak();
+  updateStreakBadge();
+  updatePaceChart();
 }
+
 function showRunSavedBanner() {
   const b = document.getElementById("runSavedBanner");
   b.classList.add("show");
