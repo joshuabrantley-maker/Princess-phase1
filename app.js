@@ -279,6 +279,11 @@ function updateStreakBadge() {
 
 // Only update the streak when a NEW week has started
 function updateWeeklyStreak() {
+  // TEMPORARY — force the correct starting streak
+  localStorage.setItem('weeklyStreak', '7');        // ← change 7 to whatever the real number should be
+  localStorage.setItem('streakLastEvaluated', '2026-08-17'); // current week start (adjust if needed)
+
+  const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
   const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
   const now = new Date();
   const thisWeekStart = getWeekStart(now);
