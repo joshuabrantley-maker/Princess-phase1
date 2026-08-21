@@ -260,6 +260,7 @@ function finish() {
 
 // Get the start of the current week (Sunday-based)
 // Get the start of the current week (Sunday-based)
+// Get the start of the current week (Sunday-based)
 function getWeekStart(date = new Date()) {
   const d = new Date(date);
   const day = d.getDay(); // 0 = Sunday
@@ -273,34 +274,34 @@ function updateStreakBadge() {
   const streak = parseInt(localStorage.getItem('weeklyStreak') || '0', 10);
   const el = document.getElementById('streakCount');
   if (!el) return;
-
   el.textContent = `🔥 Weekly Streak: ${streak} week${streak === 1 ? '' : 's'}`;
 }
 
 // Only update the streak when a NEW week has started
 function updateWeeklyStreak() {
-
-  const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
   const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
   const now = new Date();
   const thisWeekStart = getWeekStart(now);
-  const thisWeekKey = thisWeekStart.toISOString().slice(0, 10); // e.g. "2026-08-17"
 
-  // Have we already evaluated this week?
+  // Local date key (avoids timezone problems)
+  const y = thisWeekStart.getFullYear();
+  const m = String(thisWeekStart.getMonth() + 1).padStart(2, '0');
+  const d = String(thisWeekStart.getDate()).padStart(2, '0');
+  const thisWeekKey = `${y}-${m}-${d}`;
+
   const lastEvaluated = localStorage.getItem('streakLastEvaluated');
   if (lastEvaluated === thisWeekKey) {
-    // Already done for this week — do nothing
-    return;
+    return; // already done this week
   }
 
-  // Look at the previous week
+  // Look at previous week
   const lastWeekStart = new Date(thisWeekStart);
   lastWeekStart.setDate(lastWeekStart.getDate() - 7);
   const lastWeekEnd = new Date(thisWeekStart);
 
   const runsLastWeek = stats.filter(run => {
-    const d = new Date(run.date);
-    return d >= lastWeekStart && d < lastWeekEnd;
+    const rd = new Date(run.date);
+    return rd >= lastWeekStart && rd < lastWeekEnd;
   }).length;
 
   let streak = parseInt(localStorage.getItem('weeklyStreak') || '0', 10);
@@ -312,9 +313,7 @@ function updateWeeklyStreak() {
   }
 
   localStorage.setItem('weeklyStreak', streak);
-  localStorage.setItem('streakLastEvaluated', thisWeekKey); // mark this week as done
-
-  console.log(`Streak updated for week of ${thisWeekKey}. Runs last week: ${runsLastWeek}. New streak: ${streak}`);
+  localStorage.setItem('streakLastEvaluated', thisWeekKey);
 }
 // ── Week loading ──────────────────────────────────────────
 function selectWeek(i) {
