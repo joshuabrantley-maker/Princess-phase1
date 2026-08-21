@@ -479,10 +479,16 @@ function startTodaysWorkout() {
 }
 
 function updateCountdown() {
-  const raceDay = new Date("2027-02-25");
+  const el = document.getElementById("raceCountdown");
+  if (!el) return;
+
+  // Use a more reliable date parse
+  const raceDay = new Date(2027, 1, 25); // months are 0-indexed → Feb = 1
   const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   const diff = Math.ceil((raceDay - today) / (1000 * 60 * 60 * 24));
-  document.getElementById("raceCountdown").textContent = `🏰 ${diff} days to go`;
+  el.textContent = `🏰 ${diff} days to go`;
 }
 
 updateCountdown();
