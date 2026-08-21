@@ -482,8 +482,8 @@ function updateCountdown() {
   const el = document.getElementById("raceCountdown");
   if (!el) return;
 
-  // Use a more reliable date parse
-  const raceDay = new Date(2027, 1, 25); // months are 0-indexed → Feb = 1
+  // months are 0-indexed (January = 0, February = 1)
+  const raceDay = new Date(2027, 1, 25);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
