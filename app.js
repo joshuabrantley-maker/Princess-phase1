@@ -440,9 +440,9 @@ function init() {
 }
 
 init();
-updateHomeStats();   // ⭐ NEW — updates stats on load
+updateCountdown();        // ← move this up
 updateStreakBadge();
-updateCountdown();
+updateHomeStats();        // chart runs after countdown is safe
 
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => {
