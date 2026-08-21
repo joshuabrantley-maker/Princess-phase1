@@ -565,52 +565,59 @@ function updatePaceChart() {
   const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
   if (stats.length === 0) return;
 
-  // Wait until Chart.js is actually available
   if (typeof Chart === "undefined") {
-    setTimeout(updatePaceChart, 100);   // try again shortly
+    setTimeout(updatePaceChart, 150);
     return;
   }
 
-  const labels = stats.map(run => new Date(run.date).toLocaleDateString());
-  const paces = stats.map(run => {
+  // Filter out any runs with invalid/zero distance
+  const valid = stats.filter(run => run.distance && run.distance > 0 && run.time > 0);
+  if (valid.length === 0) return;
+
+  const labels = valid.map(run => new Date(run.date).toLocaleDateString());
+  const paces = valid.map(run => {
     const minutes = run.time / 60;
-    return minutes / run.distance; // min/mile
+    return minutes / run.distance; // min per mile
   });
 
   const canvas = document.getElementById('paceChart');
   if (!canvas) return;
 
-  const ctx = canvas.getContext('2d');
+  try {
+    const ctx = canvas.getContext('2d');
 
-  if (paceChart) {
-    paceChart.destroy();
-  }
-
-  paceChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [{
-        label: 'Pace (min/mile)',
-        data: paces,
-        borderColor: '#78a0ff',
-        backgroundColor: 'rgba(120,160,255,0.2)',
-        borderWidth: 3,
-        tension: 0.3,
-        pointRadius: 4,
-        pointBackgroundColor: '#fff',
-        pointBorderColor: '#78a0ff',
-        pointHoverRadius: 6
-      }]
-    },
-    options: {
-      scales: {
-        y: { ticks: { color: '#fff' } },
-        x: { ticks: { color: '#fff' } }
-      },
-      plugins: {
-        legend: { labels: { color: '#fff' } }
-      }
+    if (paceChart) {
+      paceChart.destroy();
     }
-  });
+
+    paceChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Pace (min/mile)',
+          data: paces,
+          borderColor: '#78a0ff',
+          backgroundColor: 'rgba(120,160,255,0.2)',
+          borderWidth: 3,
+          tension: 0.3,
+          pointRadius: 4,
+          pointBackgroundColor: '#fff',
+          pointBorderColor: '#78a0ff',
+          pointHoverRadius: 6
+        }]
+      },
+      options: {
+        scales: {
+          y: { ticks: { color: '#fff' } },
+          x: { ticks: { color: '#fff' } }
+        },
+        plugins: {
+          legend: { labels: { color: '#fff' } }
+        }
+      }
+    });
+  } catch (err) {
+    console.error("Pace chart error:", err);
+  }
 }
