@@ -491,8 +491,6 @@ function updateCountdown() {
   el.textContent = `🏰 ${diff} days to go`;
 }
 
-updateCountdown();
-
 function saveWorkoutStats(distanceMiles, totalSeconds) {
   const stats = JSON.parse(localStorage.getItem('runStats') || '[]');
 
